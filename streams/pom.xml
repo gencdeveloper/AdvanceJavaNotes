@@ -3,17 +3,22 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>AdvanceJavaNotes</groupId>
+        <artifactId>AdvanceJavaNotes</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 
-    <groupId>AdvanceJavaNotes</groupId>
-    <artifactId>AdvanceJavaNotes</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <modules>
-        <module>generics</module>
-        <module>lambda</module>
-        <module>collections</module>
-        <module>streams</module>
-    </modules>
+    <artifactId>streams</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.22</version>
+        </dependency>
+    </dependencies>
+
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
