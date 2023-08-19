@@ -37,11 +37,19 @@ public class StreamOperations {
                 .forEach(System.out::println);//--->terminal operation
 
 
-        /********MAP************/
+        /********MAP*
+         * map() takes Stream<T> and return Stream<T>
+         * It is mapper function produces single value for each input value.
+         * It is called One-To-One mapping.
+         ************/
         System.out.println("MAP WITH STREAM WITH CONDITION");
         myList.stream()
                 .map(number->number*2)
                 .filter(i-> i%3 ==0)
                 .forEach(System.out::println);
+
+
+
+
     }
 }
