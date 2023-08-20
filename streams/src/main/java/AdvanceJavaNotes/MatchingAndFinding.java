@@ -62,7 +62,7 @@ public class MatchingAndFinding {
         Optional<Dish> dish2 = DishData.getAll().stream()
                 .filter(Dish::isVegetarian)
                 .findFirst();
-        System.out.println(dish.get());
+        System.out.println(dish2.get());
     }
 
 
