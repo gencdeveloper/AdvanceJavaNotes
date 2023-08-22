@@ -61,31 +61,35 @@ public class Runner {
 
         System.out.println("***********5.QUESTION******************");
         /**Are any traders based in Milan*/
-        Optional<Transaction>AnyTraders = transactions.stream()
-                .filter(transaction -> transaction.getTrader().getCity().equals("Milan"))
-                .findAny();
-        System.out.println(AnyTraders.get());
+        boolean milanBased = transactions.stream()
+                .anyMatch(transaction -> transaction.getTrader().getCity().equals("Milan"));
+
+        System.out.println(milanBased);
+
+
+
+        System.out.println("***********6.QUESTION******************");
+        /**Print the values of all transactions from the traders living in Cambridge*/
+        transactions.stream()
+                        .filter(transaction -> transaction.getTrader().getCity().equals("Cambdridge"))
+                                .map(Transaction::getValue)
+                                        .forEach(System.out::println);
+
+
+
 
         System.out.println("***********7.QUESTION******************");
         /**What is the highest value of all the transactions*/
         Optional<Integer> highestValue = transactions.stream()
                 .map(Transaction::getValue) // Extract transaction values
-                .max(Integer::compare);
-        if (highestValue.isPresent()) {
-            System.out.println("Highest transaction value: " + highestValue.get());
-        } else {
-            System.out.println("No transactions available.");
-        }
+                .reduce(Integer::max);
+        System.out.println(highestValue.get());
 
         System.out.println("***********8.QUESTION******************");
         /**Find the transaction with the smallest value*/
-        Optional<Integer> SmallestValue = transactions.stream()
-                .map(Transaction::getValue) // Extract transaction values
-                .min(Integer::compare);
-        if (SmallestValue.isPresent()) {
-            System.out.println("Smallest transaction value: " + SmallestValue.get());
-        } else {
-            System.out.println("No transactions available.");
-        }
+        Optional<Transaction> SmallestValue = transactions.stream()
+                .reduce((t1,t2)->t1.getValue()< t2.getValue() ? t1: t2);
+        System.out.println(SmallestValue.get());
+
     }
 }
