@@ -13,13 +13,24 @@ public class StateTest {
         va.addCity("FallsChurc");
 
         State tx = new State();
-        va.addCity("Dallas");
-        va.addCity("Plano");
-        va.addCity("Austin");
-        va.addCity("Houston");
+        tx.addCity("Dallas");
+        tx.addCity("Plano");
+        tx.addCity("Austin");
+        tx.addCity("Houston");
 
+        //Printing stream of stream.Because my cities list of element with 2 obj
         List<State> list = Arrays.asList(va,tx);
 
+        /**solution with map but with stream of stream print*/
+       // list.stream().map(state ->state.getCity()).forEach(System.out::println);
+
+
+        /**solution with flatmap print*/
+        //Solution Another way with flatMap
+        list.stream()
+                .map(state -> state.getCity())
+                .flatMap(List::stream)
+                .forEach(System.out::println);
 
 
 
